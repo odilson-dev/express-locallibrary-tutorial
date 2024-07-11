@@ -30,6 +30,16 @@ app.use("/users", usersRouter);
 // See: https://mongoosejs.com/docs/migrating_to_6.html#strictquery-is-removed-and-replaced-by-strict
 mongoose.set("strictQuery", false);
 
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB = process.env.DATABASE_URL;
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+  console.log("Pinged your deployment. You successfully connected to MongoDB!");
+}
+
 // Define the database URL to connect to.
 // const mongoDB = "mongodb://127.0.0.1/my_database";
 
