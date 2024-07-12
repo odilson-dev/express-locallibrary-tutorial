@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const wiki = require("./routes/wiki");
 
 // Import the mongoose module
 const mongoose = require("mongoose");
@@ -24,21 +25,21 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/wiki", wiki);
 
 // Set `strictQuery: false` to globally opt into filtering by properties that aren't in the schema
 // Included because it removes preparatory warnings for Mongoose 7.
 // See: https://mongoosejs.com/docs/migrating_to_6.html#strictquery-is-removed-and-replaced-by-strict
 mongoose.set("strictQuery", false);
 
-const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
-const mongoDB = process.env.DATABASE_URL;
+// mongoose.set("strictQuery", false);
+// const mongoDB = process.env.DATABASE_URL;
 
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(mongoDB);
-  console.log("Pinged your deployment. You successfully connected to MongoDB!");
-}
+// main().catch((err) => console.log(err));
+// async function main() {
+//   await mongoose.connect(mongoDB);
+//   console.log("Pinged your deployment. You successfully connected to MongoDB!");
+// }
 
 // Define the database URL to connect to.
 // const mongoDB = "mongodb://127.0.0.1/my_database";
