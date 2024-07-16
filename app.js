@@ -4,6 +4,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+require("dotenv").config();
+const mongoDB = process.env.DATABASE_URL;
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog");
@@ -24,28 +27,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-// Set `strictQuery: false` to globally opt into filtering by properties that aren't in the schema
-// Included because it removes preparatory warnings for Mongoose 7.
-// See: https://mongoosejs.com/docs/migrating_to_6.html#strictquery-is-removed-and-replaced-by-strict
-mongoose.set("strictQuery", false);
+app.use("/catalog", catalogRouter);
 
-// mongoose.set("strictQuery", false);
-// const mongoDB = process.env.DATABASE_URL;
-
-// main().catch((err) => console.log(err));
-// async function main() {
-//   await mongoose.connect(mongoDB);
-//   console.log("Pinged your deployment. You successfully connected to MongoDB!");
-// }
-
-// Define the database URL to connect to.
-// const mongoDB = "mongodb://127.0.0.1/my_database";
-
-// // Wait for database to connect, logging an error if there is a problem
-// main().catch((err) => console.log(err));
-// async function main() {
-//   await mongoose.connect(mongoDB);
-// }
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+  console.log("Pinged your deployment. You successfully connected to MongoDB!");
+}
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
