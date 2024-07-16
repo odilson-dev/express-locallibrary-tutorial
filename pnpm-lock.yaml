@@ -29,6 +29,9 @@ importers:
       http-errors:
         specifier: ~1.6.3
         version: 1.6.3
+      luxon:
+        specifier: ^3.4.4
+        version: 3.4.4
       mongodb:
         specifier: ^6.8.0
         version: 6.8.0
@@ -353,6 +356,10 @@ packages:
   kareem@2.6.3:
     resolution: {integrity: sha512-C3iHfuGUXK2u8/ipq9LfjFfXFxAZMQJJq7vLS45r3D9Y2xQ/m4S8zaR4zMLFWh9AsNPXmcFfUDhTEO8UIC/V6Q==}
     engines: {node: '>=12.0.0'}
+
+  luxon@3.4.4:
+    resolution: {integrity: sha512-zobTr7akeGHnv7eBOXcRgMeCP6+uyYsczwmeRCauvpvaAltgNyTbLH/+VaEAPUeWBT+1GuNmz4wC/6jtQzbbVA==}
+    engines: {node: '>=12'}
 
   media-typer@0.3.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
@@ -995,6 +1002,8 @@ snapshots:
       promise: 7.3.1
 
   kareem@2.6.3: {}
+
+  luxon@3.4.4: {}
 
   media-typer@0.3.0: {}
 
